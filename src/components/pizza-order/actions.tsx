@@ -23,23 +23,15 @@ export function PizzaOrderActions() {
         </div>
       )}
 
-      <div className="flex gap-2">
-        {optimisticOrder.items.length > 0 && (
-          <button
-            onClick={clearOrder}
-            disabled={isPending}
-            className="flex-1 rounded border border-zinc-300 bg-white px-3 py-2 text-sm font-medium text-zinc-700 transition enabled:hover:bg-zinc-50 disabled:opacity-50"
-          >
-            Clear Cart
-          </button>
-        )}
+      {optimisticOrder.items.length > 0 && (
         <button
-          disabled={optimisticOrder.items.length === 0 || isPending}
-          className="flex-1 rounded bg-zinc-900 px-3 py-2 text-sm font-medium text-white transition enabled:hover:bg-zinc-800 disabled:opacity-40"
+          onClick={clearOrder}
+          disabled={isPending}
+          className="w-full rounded border border-zinc-300 bg-white px-3 py-2 text-sm font-medium text-zinc-700 transition enabled:hover:bg-zinc-50 disabled:opacity-50"
         >
-          Place Order
+          Clear Cart
         </button>
-      </div>
+      )}
     </div>
   );
 }

@@ -15,7 +15,7 @@ import type {
   Pizza,
   PizzaOrderContextType,
 } from "./types";
-import { addToServer, clearServerOrder, removeFromServer } from "@/lib/api";
+import { addToServer, clearServerOrder, removeFromServer, updateOnServer } from "@/lib/api";
 
 const PizzaOrderContext = createContext<PizzaOrderContextType | null>(null);
 
@@ -103,7 +103,7 @@ export function PizzaOrderProvider({ children }: { children: React.ReactNode }) 
             result = await removeFromServer(action.pizzaId);
             break;
           case "UPDATE_QUANTITY":
-            result = await removeFromServer(action.pizzaId);
+            result = await updateOnServer(action.pizzaId, action.quantity);
             break;
           case "CLEAR":
             result = await clearServerOrder();

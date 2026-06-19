@@ -48,6 +48,7 @@ export default function Home() {
       </header>
 
       <PizzaOrder.Root>
+        <PizzaOrder.Header />
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-5">
           <div className="lg:col-span-3">
             <PizzaOrder.Menu>

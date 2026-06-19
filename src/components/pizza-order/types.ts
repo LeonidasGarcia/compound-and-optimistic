@@ -33,10 +33,10 @@ export type PizzaOrderContextType = {
 };
 
 export const PIZZAS: Pizza[] = [
-  { id: "margherita", name: "Margherita", description: "Tomato sauce, mozzarella, basil", price: 10 },
-  { id: "pepperoni", name: "Pepperoni", description: "Tomato sauce, mozzarella, pepperoni", price: 12 },
-  { id: "vegetarian", name: "Vegetarian", description: "Tomato sauce, mozzarella, bell peppers, olives, mushrooms", price: 11 },
-  { id: "hawaiian", name: "Hawaiian", description: "Tomato sauce, mozzarella, ham, pineapple", price: 13 },
-  { id: "meat_lovers", name: "Meat Lovers", description: "Tomato sauce, mozzarella, pepperoni, sausage, bacon", price: 15 },
-  { id: "quattro_formaggi", name: "Quattro Formaggi", description: "Tomato sauce, mozzarella, gorgonzola, parmesan, ricotta", price: 14 },
+  { id: "margherita", name: "Margarita", description: "Salsa de tomate, mozzarella, albahaca", price: 10 },
+  { id: "pepperoni", name: "Pepperoni", description: "Salsa de tomate, mozzarella, pepperoni", price: 12 },
+  { id: "vegetarian", name: "Vegetariana", description: "Salsa de tomate, mozzarella, pimientos, aceitunas, champiñones", price: 11 },
+  { id: "hawaiian", name: "Hawaiana", description: "Salsa de tomate, mozzarella, jamón, piña", price: 13 },
+  { id: "meat_lovers", name: "Carnes", description: "Salsa de tomate, mozzarella, pepperoni, salchicha, tocino", price: 15 },
+  { id: "quattro_formaggi", name: "Cuatro Quesos", description: "Salsa de tomate, mozzarella, gorgonzola, parmesano, ricota", price: 14 },
 ];

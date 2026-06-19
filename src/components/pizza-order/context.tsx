@@ -115,10 +115,10 @@ export function PizzaOrderProvider({ children }: { children: React.ReactNode }) 
         if (result.success) {
           setOrder((prev) => orderReducer(prev, action));
         } else {
-          setError(result.error ?? "Unknown error");
+          setError(result.error ?? "Error desconocido");
         }
       } catch {
-        setError("Unexpected error occurred");
+        setError("Ocurrió un error inesperado");
       } finally {
         pendingActions.current -= 1;
         if (pendingActions.current <= 0) {
@@ -172,7 +172,7 @@ export function PizzaOrderProvider({ children }: { children: React.ReactNode }) 
 export function usePizzaOrder(): PizzaOrderContextType {
   const ctx = useContext(PizzaOrderContext);
   if (!ctx) {
-    throw new Error("usePizzaOrder must be used within a PizzaOrderProvider");
+    throw new Error("usePizzaOrder debe usarse dentro de un PizzaOrderProvider");
   }
   return ctx;
 }

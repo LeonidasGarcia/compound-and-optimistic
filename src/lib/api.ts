@@ -11,7 +11,7 @@ export async function addToServer(
   await delay(1200);
 
   if (Math.random() < 0.5) {
-    return { success: false, error: "Network error: could not reach server." };
+    return { success: false, error: "Error de red: no se pudo conectar con el servidor." };
   }
 
   return { success: true };
@@ -24,7 +24,7 @@ export async function removeFromServer(
   await delay(800);
 
   if (Math.random() < 0.15) {
-    return { success: false, error: "Network error: could not remove item." };
+    return { success: false, error: "Error de red: no se pudo eliminar el producto." };
   }
 
   return { success: true };
@@ -34,7 +34,7 @@ export async function clearServerOrder(): Promise<{ success: boolean; error?: st
   await delay(1000);
 
   if (Math.random() < 0.1) {
-    return { success: false, error: "Network error: could not clear order." };
+    return { success: false, error: "Error de red: no se pudo vaciar el pedido." };
   }
 
   return { success: true };

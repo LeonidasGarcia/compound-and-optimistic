@@ -19,7 +19,7 @@ export function PizzaOrderMenuItem({ pizza }: { pizza: Pizza }) {
           disabled={isPending}
           className="rounded bg-emerald-600 px-3 py-1.5 text-sm font-medium text-white transition enabled:hover:bg-emerald-700 disabled:opacity-50"
         >
-          Add
+          Agregar
         </button>
       </div>
     </div>

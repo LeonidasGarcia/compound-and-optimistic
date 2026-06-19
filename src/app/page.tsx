@@ -41,9 +41,9 @@ export default function Home() {
           Compound <span className="text-zinc-400">&amp;</span> Optimistic
         </h1>
         <p className="text-zinc-500 max-w-xl mx-auto text-sm">
-          A hands-on demo of two React patterns working together:{" "}
-          <strong>Compound Components</strong> (shared state via Context) and{" "}
-          <strong>useOptimistic</strong> (instant UI updates with async sync).
+          Un demo práctico de dos patrones de React trabajando juntos:{" "}
+          <strong>Compound Components</strong> (estado compartido via Context) y{" "}
+          <strong>useOptimistic</strong> (actualizaciones instantáneas con sincronización asíncrona).
         </p>
       </header>
 
@@ -68,49 +68,51 @@ export default function Home() {
       </PizzaOrder.Root>
 
       <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <PatternCard title="Compound Components" badge="pattern">
+        <PatternCard title="Compound Components" badge="patrón">
           <p>
-            The <CodeTag>PizzaOrder</CodeTag> component family shares implicit
-            state via React Context. Children like{" "}
+            La familia de componentes <CodeTag>PizzaOrder</CodeTag> comparte
+            estado implícito mediante React Context. Componentes hijos como{" "}
             <CodeTag>PizzaOrder.Menu</CodeTag>,{" "}
             <CodeTag>PizzaOrder.MenuItem</CodeTag>,{" "}
-            <CodeTag>PizzaOrder.CurrentOrder</CodeTag>, and{" "}
-            <CodeTag>PizzaOrder.Total</CodeTag> all consume the same order state
-            without prop drilling. This is the essence of the{" "}
-            <strong>Compound Component</strong> pattern: a parent orchestrates
-            state, and declarative children render it.
+            <CodeTag>PizzaOrder.CurrentOrder</CodeTag> y{" "}
+            <CodeTag>PizzaOrder.Total</CodeTag> consumen el mismo estado del pedido
+            sin prop drilling. Esta es la esencia del patrón{" "}
+            <strong>Compound Component</strong>: un padre orquesta el
+            estado, y los hijos declarativos lo renderizan.
           </p>
         </PatternCard>
 
         <PatternCard title="useOptimistic" badge="hook">
           <p>
-            The <CodeTag>useOptimistic</CodeTag> hook (React 19) lets the UI
-            reflect mutations <strong>before</strong> the server confirms them.
-            When you add or remove a pizza, the cart updates instantly while
+            El hook <CodeTag>useOptimistic</CodeTag> (React 19) permite que la
+            UI refleje las mutaciones <strong>antes</strong> de que el servidor
+            las confirme. Cuando agregas o eliminas una pizza, el carrito se
+            actualiza al instante mientras{" "}
             <CodeTag>addToServer</CodeTag> / <CodeTag>removeFromServer</CodeTag>{" "}
-            run in the background (simulated with a delay + 15-20% random
-            failure). On error, the optimistic state is discarded and the error
-            is shown — the user never waits for the network.
+            se ejecutan en segundo plano (simulado con una demora + 50% de fallo
+            aleatorio). En caso de error, el estado optimista se descarta y se
+            muestra el error — el usuario nunca espera la red.
           </p>
         </PatternCard>
       </section>
 
       <section className="rounded-lg border border-zinc-200 bg-white p-5 text-sm text-zinc-600 leading-relaxed">
-        <h2 className="font-semibold text-zinc-800 mb-2">How they combine</h2>
+        <h2 className="font-semibold text-zinc-800 mb-2">Cómo se combinan</h2>
         <p>
-          The <CodeTag>PizzaOrderProvider</CodeTag> (inside{" "}
-          <CodeTag>PizzaOrder.Root</CodeTag>) owns both the authoritative{" "}
-          <CodeTag>order</CodeTag> state (via <CodeTag>useState</CodeTag>) and
-          the optimistic mirror (via <CodeTag>useOptimistic</CodeTag>).
-          Mutations first update the optimistic state (instant), then call the
-          simulated API. On success, the authoritative state catches up; on
-          failure, the optimistic state reverts. All sub-components read from{" "}
-          <CodeTag>optimisticOrder</CodeTag> so the UI always feels snappy.
+          El <CodeTag>PizzaOrderProvider</CodeTag> (dentro de{" "}
+          <CodeTag>PizzaOrder.Root</CodeTag>) posee tanto el estado
+          autoritativo <CodeTag>order</CodeTag> (via <CodeTag>useState</CodeTag>)
+          como el espejo optimista (via <CodeTag>useOptimistic</CodeTag>).
+          Las mutaciones primero actualizan el estado optimista (instantáneo),
+          luego llaman a la API simulada. En éxito, el estado autoritativo se
+          actualiza; en fallo, el estado optimista se revierte. Todos los
+          sub-componentes leen de <CodeTag>optimisticOrder</CodeTag> para que la
+          UI siempre se sienta rápida.
         </p>
       </section>
 
       <footer className="text-center text-xs text-zinc-400 pb-6">
-        Built with Next.js 16 &middot; React 19 &middot; Tailwind CSS 3.4
+        Construido con Next.js 16 &middot; React 19 &middot; Tailwind CSS 3.4
       </footer>
     </div>
   );

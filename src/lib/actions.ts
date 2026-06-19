@@ -1,36 +1,38 @@
+"use server";
+
 function delay(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
 }
 
-export async function addToServer(
-  prevState: { items: Array<{ pizzaId: string; quantity: number }> },
-  item: { pizzaId: string; quantity: number }
+export async function addItemToServer(
+  pizzaId: string,
+  quantity: number
 ): Promise<{ success: boolean; error?: string }> {
-  void prevState;
-  void item;
+  void pizzaId;
+  void quantity;
   await delay(1200);
 
   if (Math.random() < 0.5) {
-    return { success: false, error: "Error de red: no se pudo conectar con el servidor." };
+    return { success: false, error: "Error al agregar: no se pudo conectar con el servidor." };
   }
 
   return { success: true };
 }
 
-export async function removeFromServer(
+export async function removeItemFromServer(
   pizzaId: string
 ): Promise<{ success: boolean; error?: string }> {
   void pizzaId;
   await delay(800);
 
   if (Math.random() < 0.5) {
-    return { success: false, error: "Error de red: no se pudo eliminar el producto." };
+    return { success: false, error: "Error al eliminar: no se pudo conectar con el servidor." };
   }
 
   return { success: true };
 }
 
-export async function updateOnServer(
+export async function updateQuantityOnServer(
   pizzaId: string,
   quantity: number
 ): Promise<{ success: boolean; error?: string }> {
@@ -45,11 +47,11 @@ export async function updateOnServer(
   return { success: true };
 }
 
-export async function clearServerOrder(): Promise<{ success: boolean; error?: string }> {
+export async function clearOrderOnServer(): Promise<{ success: boolean; error?: string }> {
   await delay(1000);
 
   if (Math.random() < 0.5) {
-    return { success: false, error: "Error de red: no se pudo vaciar el pedido." };
+    return { success: false, error: "Error al vaciar: no se pudo conectar con el servidor." };
   }
 
   return { success: true };

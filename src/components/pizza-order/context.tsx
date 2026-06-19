@@ -6,7 +6,6 @@ import {
   useContext,
   useOptimistic,
   useRef,
-  startTransition,
   useState,
 } from "react";
 import type {
@@ -15,7 +14,12 @@ import type {
   Pizza,
   PizzaOrderContextType,
 } from "./types";
-import { addToServer, clearServerOrder, removeFromServer, updateOnServer } from "@/lib/api";
+import {
+  addItemToServer,
+  clearOrderOnServer,
+  removeItemFromServer,
+  updateQuantityOnServer,
+} from "@/lib/actions";
 
 const PizzaOrderContext = createContext<PizzaOrderContextType | null>(null);
 
@@ -78,54 +82,52 @@ export function PizzaOrderProvider({ children }: { children: React.ReactNode }) 
 
   const syncAction = useCallback(
     async (action: OrderAction) => {
-      startTransition(async () => {
-        pendingActions.current += 1;
-        setIsPending(true);
-        setError(null);
+      pendingActions.current += 1;
+      setIsPending(true);
+      setError(null);
 
-        addOptimisticAction(action);
+      addOptimisticAction(action);
 
-        try {
-        let result: { success: boolean; error?: string };
+      try {
+      let result: { success: boolean; error?: string };
 
-        switch (action.type) {
-          case "ADD_ITEM": {
-            const existingItem = order.items.find(
-              (i) => i.pizza.id === action.pizza.id
-            );
-            result = await addToServer(
-              { items: order.items.map((i) => ({ pizzaId: i.pizza.id, quantity: i.quantity })) },
-              { pizzaId: action.pizza.id, quantity: (existingItem?.quantity ?? 0) + 1 }
-            );
-            break;
-          }
-          case "REMOVE_ITEM":
-            result = await removeFromServer(action.pizzaId);
-            break;
-          case "UPDATE_QUANTITY":
-            result = await updateOnServer(action.pizzaId, action.quantity);
-            break;
-          case "CLEAR":
-            result = await clearServerOrder();
-            break;
-          default:
-            result = { success: true };
+      switch (action.type) {
+        case "ADD_ITEM": {
+          const existingItem = order.items.find(
+            (i) => i.pizza.id === action.pizza.id
+          );
+          result = await addItemToServer(
+            action.pizza.id,
+            (existingItem?.quantity ?? 0) + 1
+          );
+          break;
         }
-
-        if (result.success) {
-          setOrder((prev) => orderReducer(prev, action));
-        } else {
-          setError(result.error ?? "Error desconocido");
-        }
-      } catch {
-        setError("Ocurrió un error inesperado");
-      } finally {
-        pendingActions.current -= 1;
-        if (pendingActions.current <= 0) {
-          setIsPending(false);
-        }
+        case "REMOVE_ITEM":
+          result = await removeItemFromServer(action.pizzaId);
+          break;
+        case "UPDATE_QUANTITY":
+          result = await updateQuantityOnServer(action.pizzaId, action.quantity);
+          break;
+        case "CLEAR":
+          result = await clearOrderOnServer();
+          break;
+        default:
+          result = { success: true };
       }
-      });
+
+      if (result.success) {
+        setOrder((prev) => orderReducer(prev, action));
+      } else {
+        setError(result.error ?? "Error desconocido");
+      }
+    } catch {
+      setError("Ocurrió un error inesperado");
+    } finally {
+      pendingActions.current -= 1;
+      if (pendingActions.current <= 0) {
+        setIsPending(false);
+      }
+    }
     },
     [addOptimisticAction, order]
   );

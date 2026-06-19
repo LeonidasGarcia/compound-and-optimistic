@@ -9,11 +9,11 @@ export function PizzaOrderCurrentOrder() {
 
   return (
     <div>
-      <h2 className="text-lg font-semibold text-zinc-800 mb-3">
+      <h2 className="text-lg font-semibold text-[#3D2E1E] mb-3">
         Tu pedido {count > 0 ? `(${count} producto${count > 1 ? "s" : ""})` : ""}
       </h2>
       {count === 0 ? (
-        <p className="text-sm text-zinc-400 italic py-8 text-center">
+        <p className="text-sm text-masa-oscuro italic py-8 text-center">
           Tu carrito está vacío. ¡Agrega pizzas!
         </p>
       ) : (

@@ -12,7 +12,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es" className="h-full antialiased">
-      <body className="min-h-full flex flex-col bg-zinc-100 text-zinc-900">
+      <body className="min-h-full flex flex-col bg-masa-claro text-[#3D2E1E]">
         {children}
       </body>
     </html>

@@ -8,7 +8,7 @@ export function PizzaOrderActions() {
   return (
     <div className="space-y-2">
       {error && (
-        <div className="rounded border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-700">
+        <div className="rounded border border-salsa-claro bg-salsa-claro px-3 py-2 text-xs text-salsa-oscuro">
           {error}
         </div>
       )}
@@ -27,7 +27,7 @@ export function PizzaOrderActions() {
         <button
           onClick={clearOrder}
           disabled={isPending}
-          className="w-full rounded border border-zinc-300 bg-white px-3 py-2 text-sm font-medium text-zinc-700 transition enabled:hover:bg-zinc-50 disabled:opacity-50"
+          className="w-full rounded border border-masa-oscuro bg-masa px-3 py-2 text-sm font-medium text-[#5C4A32] transition enabled:hover:bg-masa-claro disabled:opacity-50"
         >
           Vaciar carrito
         </button>

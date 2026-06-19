@@ -5,7 +5,7 @@ import { PIZZAS } from "@/components/pizza-order/types";
 
 function CodeTag({ children }: { children: React.ReactNode }) {
   return (
-    <code className="rounded bg-zinc-800 px-1.5 py-0.5 text-xs text-amber-300 font-mono">
+    <code className="rounded bg-[#3D2E1E] px-1.5 py-0.5 text-xs text-masa-claro font-mono">
       {children}
     </code>
   );
@@ -21,14 +21,14 @@ function PatternCard({
   children: React.ReactNode;
 }) {
   return (
-    <div className="rounded-lg border border-zinc-200 bg-white p-4">
+    <div className="rounded-lg border border-masa-oscuro bg-masa p-4">
       <div className="flex items-center gap-2 mb-2">
-        <span className="rounded bg-zinc-800 px-2 py-0.5 text-xs font-mono font-semibold uppercase tracking-wider text-white">
+        <span className="rounded bg-[#3D2E1E] px-2 py-0.5 text-xs font-mono font-semibold uppercase tracking-wider text-white">
           {badge}
         </span>
-        <h3 className="font-semibold text-zinc-800">{title}</h3>
+        <h3 className="font-semibold text-[#3D2E1E]">{title}</h3>
       </div>
-      <div className="text-sm text-zinc-600 leading-relaxed">{children}</div>
+      <div className="text-sm text-[#5C4A32] leading-relaxed">{children}</div>
     </div>
   );
 }
@@ -37,10 +37,10 @@ export default function Home() {
   return (
     <div className="flex-1 w-full max-w-5xl mx-auto px-4 py-10 space-y-10">
       <header className="text-center space-y-2">
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-900">
-          Compound <span className="text-zinc-400">&amp;</span> Optimistic
+        <h1 className="text-3xl font-bold tracking-tight text-[#3D2E1E]">
+          Compound <span className="text-masa-oscuro">&amp;</span> Optimistic
         </h1>
-        <p className="text-zinc-500 max-w-xl mx-auto text-sm">
+        <p className="text-masa-oscuro max-w-xl mx-auto text-sm">
           Un demo práctico de dos patrones de React trabajando juntos:{" "}
           <strong>Compound Components</strong> (estado compartido via Context) y{" "}
           <strong>useOptimistic</strong> (actualizaciones instantáneas con sincronización asíncrona).
@@ -97,8 +97,8 @@ export default function Home() {
         </PatternCard>
       </section>
 
-      <section className="rounded-lg border border-zinc-200 bg-white p-5 text-sm text-zinc-600 leading-relaxed">
-        <h2 className="font-semibold text-zinc-800 mb-2">Cómo se combinan</h2>
+      <section className="rounded-lg border border-masa-oscuro bg-masa p-5 text-sm text-[#5C4A32] leading-relaxed">
+        <h2 className="font-semibold text-[#3D2E1E] mb-2">Cómo se combinan</h2>
         <p>
           El <CodeTag>PizzaOrderProvider</CodeTag> (dentro de{" "}
           <CodeTag>PizzaOrder.Root</CodeTag>) posee tanto el estado
@@ -112,7 +112,7 @@ export default function Home() {
         </p>
       </section>
 
-      <footer className="text-center text-xs text-zinc-400 pb-6">
+      <footer className="text-center text-xs text-masa-oscuro pb-6">
         Construido con Next.js 16 &middot; React 19 &middot; Tailwind CSS 3.4
       </footer>
     </div>
